@@ -1,0 +1,33 @@
+<html>
+<head>
+	<title>Machine Learning Project</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+	<div>
+		<h1>Model</h1>
+		<form method="POST"
+			action="{{ url_for('set_data') }}">
+            {% for part in data %}
+            {% if part['featureType'] == 'int' %}
+                <input type="{{part['featureName']}}" name="age" id="age">
+            {% elif part['featureType'] == 'bool' %}
+                <p>{{part['featureName']}}</p>
+            {% endif %} 
+
+            <label for="number">Age</label><br>
+
+			<input type="checkbox"
+				name="anaemia"
+				id="anaemia"
+				value="anaemia">
+				<label for="linear_regression">Anaemia</label><br>
+            {{% endfor %}}
+        <button type="submit">Get Prediction</button>
+            
+		</form>
+	</div>
+
+</body>
+
+</html>

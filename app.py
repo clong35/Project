@@ -13,6 +13,7 @@ app.config['TEMPLATES_AUTO_RELOAD'] = True
 # selected_features = []
 # selected_model = ""
 
+import routes
 
 def train_model(features, model):
     pass
@@ -20,3 +21,4 @@ def train_model(features, model):
 
 if __name__ == '__main__':
     app.run(debug=True)
+

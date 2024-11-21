@@ -1,1 +1,36 @@
-<p>Pretrained model</p>
+<html>
+<head>
+	<title>Machine Learning Project</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+	<div>
+		<h1>Model</h1>
+		<form method="POST"
+			action="{{ url_for('set_data') }}">
+            {% for part in data %}
+            {% if part['featureType'] == 'int' %}
+                <input type="number" name="{{part['featureName']}}" id="{{part['featureName']}}" value="{{part['featureName']}}">
+            {% elif part['featureType'] == 'bool' %}
+                <input type="checkbox" name="{{part['featureName']}}" id="{{part['featureName']}}" value="{{part['featureName']}}">
+            {% elif part['featureType'] == 'float' %}
+                <input type="number" name="{{part['featureName']}}" id="{{part['featureName']}}" value="{{part['featureName']}}" step="0.01">
+
+            {% endif %} 
+
+            <label for="number">{{part['featureName']}}</label><br><br>
+<!-- 
+			<input type="checkbox"
+				name="anaemia"
+				id="anaemia"
+				value="anaemia">
+				<label for="linear_regression">Anaemia</label><br> -->
+            {% endfor %}
+        <button type="submit">Get Prediction</button>
+
+		</form>
+	</div>
+
+</body>
+
+</html>

@@ -1,2 +1,3 @@
 age,anaemia,creatinine_phosphokinase,diabetes,ejection_fraction,high_blood_pressure,platelets,serum_creatinine,serum_sodium,sex,smoking,time,DEATH_EVENT
 Age,Decrease of red blood cells or hemoglobin (boolean),Level of the CPK enzyme in the blood (mcg/L),If the patient has diabetes (boolean),Percentage of blood leaving the heart at each contraction (percentage),If the patient has hypertension (boolean),Platelets in the blood (kiloplatelets/mL),Level of serum creatinine in the blood (mg/dL),Level of serum sodium in the blood (mEq/L),Woman or man (binary),If the patient smokes or not (boolean),Follow-up period (days),If the patient deceased during the follow-up period (boolean)
+int,bool,int,bool,int,bool,float,float,int,bool,bool,int,bool

@@ -9,7 +9,7 @@ def view_form():
 
 @app.route('/pretrained_model/', methods=['GET', 'POST'])
 def pretrained_model():
-    return render_template('pretrained_model.html')
+    return render_template('pretrained_model.html', data=get_data())
 
 
 @app.route('/train_own_model/', methods=['GET', 'POST'])
@@ -29,6 +29,7 @@ def get_data():
 
         feature_names = rows[0]
         feature_descriptions = rows[1]
+        feature_type = rows[2]
 
         for i in range(len(feature_names)):
             data.append({
@@ -36,6 +37,7 @@ def get_data():
                 "featureDescription": feature_descriptions[i],
                 "isFeatureSelected": True,
                 "formattedFeatureName": feature_names[i].title().replace('_', ' '),
+                "featureType": feature_type[i]
             })
     return data
     return jsonify(data)
