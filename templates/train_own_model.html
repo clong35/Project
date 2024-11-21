@@ -1,0 +1,30 @@
+<html>
+<head>
+	<title>Machine Learning Project</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+	<div>
+		<h1>Model</h1>
+		<form method="POST"
+			action="{{ url_for('set_data') }}">
+			<H2>Select Features</H2>
+			{% for feature in features %}
+			<input type="checkbox"
+				name="selected_features"
+				id="{{feature['formattedFeatureName']}}"
+				value="{{feature['formattedFeatureName']}}">
+				<label for="linear_regression">{{feature['formattedFeatureName']}}</label><br>
+			{% endfor %}
+			<H2>Select Model</H2>
+			<input type="radio" name="selected_model" id="linear_regression", value="linear_regression">
+			<label for="linear_regression">Linear Regresson</label><br>
+			<input type="radio" name="selected_model" id="random_forest" value="random_forest">
+			<label for="random_forest">Random Forest</label><br>
+			<button type="submit">submit</button>
+		</form>
+	</div>
+
+</body>
+
+</html>
