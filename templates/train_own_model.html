@@ -17,10 +17,12 @@
 				<label for="linear_regression">{{feature['formattedFeatureName']}}</label><br>
 			{% endfor %}
 			<H2>Select Model</H2>
-			<input type="radio" name="selected_model" id="linear_regression", value="linear_regression">
-			<label for="linear_regression">Linear Regresson</label><br>
-			<input type="radio" name="selected_model" id="random_forest" value="random_forest">
-			<label for="random_forest">Random Forest</label><br>
+			<input type="radio" name="selected_model" id="logistic_regression_classifier", value="logistic_regression_classifier">
+			<label for="logistic_regression_classifier">Logistic Regression Classifier</label><br>
+			<input type="radio" name="selected_model" id="decision_tree_classifier" value="decision_tree_classifier">
+			<label for="decision_tree_classifier">Decision Tree Classifier</label><br>
+			<input type="radio" name="selected_model" id="linear_discriminant_analysis" value="linear_discriminant_analysis">
+			<label for="linear_discriminant_analysis">Linear Discriminant Analysis</label><br>
 			<button type="submit">submit</button>
 		</form>
 	</div>
