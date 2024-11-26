@@ -13,8 +13,8 @@
 			<input type="checkbox"
 				name="selected_features"
 				id="{{feature['formattedFeatureName']}}"
-				value="{{feature['formattedFeatureName']}}">
-				<label for="linear_regression">{{feature['formattedFeatureName']}}</label><br>
+				value="{{feature['featureName']}}">
+				<label for="{{feature['formattedFeatureName']}}">{{feature['formattedFeatureName']}}</label><br>
 			{% endfor %}
 			<H2>Select Model</H2>
 			<input type="radio" name="selected_model" id="logistic_regression_classifier", value="logistic_regression_classifier">
@@ -23,7 +23,7 @@
 			<label for="decision_tree_classifier">Decision Tree Classifier</label><br>
 			<input type="radio" name="selected_model" id="linear_discriminant_analysis" value="linear_discriminant_analysis">
 			<label for="linear_discriminant_analysis">Linear Discriminant Analysis</label><br>
-			<button type="submit">submit</button>
+			<button type="train">submit</button>
 		</form>
 	</div>
 

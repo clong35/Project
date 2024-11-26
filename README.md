@@ -11,3 +11,6 @@ add interacting with the model
 
 KNeighborsClassifier
 DecisionTreeClassifier
+
+
+https://www.kaggle.com/datasets/steve1215rogg/student-lifestyle-dataset?select=student_lifestyle_dataset.csv

@@ -5,19 +5,19 @@ import pandas as pd
 
 from sklearn.model_selection import train_test_split
 from sklearn.tree import DecisionTreeClassifier
-from sklearn.metrics import f1_score
+# from sklearn.metrics import f1_score
 
 
-df = pd.read_csv('heart_failure_clinical_records_dataset.csv')
+df = pd.read_csv('student_lifestyle_dataset.csv')
 
-X = df.copy().drop('DEATH_EVENT', axis='columns')
-y = df['DEATH_EVENT'].copy()
+X = df.copy().drop(['Stress_Level', 'Student_ID'], axis='columns')
+y = df['Stress_Level'].copy()
 
 X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.1, random_state=1)
 
 print(X_test.head)
-print(type(X_test))
-# model = DecisionTreeClassifier()
+
+model = DecisionTreeClassifier()
 
 # from sklearn.neighbors import KNeighborsClassifier
 # from sklearn.linear_model import LogisticRegression
@@ -26,18 +26,18 @@ print(type(X_test))
 # # model = LogisticRegression()
 # # model = KNeighborsClassifier()
 # # descision tree classifier instead
-# model.fit(X_train, y_train)
+model.fit(X_train, y_train)
 
-# y_pred = model.predict(X_test)
-# print(y_pred)
+y_pred = model.predict(X_test)
+print(y_pred)
 # # print(y_test)
 # print(f"f1 score {f1_score(y_test, y_pred)}")
 
-# import pickle
+import pickle
 # s = pickle.dumps(model)
 
-# with open('saved_model.pkl', 'wb') as file:
-#     pickle.dump(model, file)
+with open('saved_model.pkl', 'wb') as file:
+    pickle.dump(model, file)
 
 # # loaded_model = None
 # # with open('saved_model.pkl', 'rb') as file:

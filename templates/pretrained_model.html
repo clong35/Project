@@ -7,25 +7,10 @@
 	<div>
 		<h1>Model</h1>
 		<form method="POST"
-			action="{{ url_for('predict') }}">
+			action="{{ url_for('predict_pretrained') }}">
             {% for part in data %}
-            {% if part['featureType'] == 'int' %}
-                <input type="number" name="{{part['featureName']}}" id="{{part['featureName']}}" value="{{part['featureName']}}">
-                <label>{{part['featureName']}}</label><br><br>
-            {% elif part['featureType'] == 'bool' %}
-                <input type="checkbox" name="{{part['featureName']}}" id="{{part['featureName']}}" value="{{part['featureName']}}">
-                <label>{{part['featureName']}}</label><br><br>
-            {% elif part['featureType'] == 'float' %}
-                <input type="number" name="{{part['featureName']}}" id="{{part['featureName']}}" value="{{part['featureName']}}" step="0.01">
-                <label>{{part['featureName']}}</label><br><br>
-            {% elif part['featureType'] == 'other' %}
-            {% else %}
-                <input type="radio" name="sex" id="{{part['featureName']}}" value="female">
-                <label>female</label><br><br>
-                <input type="radio" name="sex" id="{{part['featureName']}}" value="male">
-                <label>male</label><br><br>
-
-            {% endif %} 
+                <input type="number" name="{{part['featureName']}}" id="{{part['featureName']}}" value="{{part['featureName']}}", step="0.01">
+                <label>{{part['formattedFeatureName']}}</label><br><br>
             {% endfor %}
         <button type="submit">Get Prediction</button>
 

@@ -12,22 +12,18 @@
     <p>
         Here you can train a model of your own or use a premade model.
 
-        The data is of patients and death events due to heart failure. 
+        The dataset I chose is of student lifestyles and how that affects stress Level. 
         <br>
         <h3>List of Features</h3>
-        Age: Age of the subject <br>
-        Anaemia: Decrease of red blood cells or hemoglobin (boolean) <br>
-        Creatinine Phosphokinase: Level of the CPK enzyme in the blood (mcg/L) <br>
-        Diabetes: If the patient has diabetes (boolean) <br>
-        Ejection Fraction: Percentage of blood leaving the heart at each contraction (percentage) <br>
-        High Blood Pressure: If the patient has hypertension (boolean) <br>
-        Platelets: Platelets in the blood (kiloplatelets/mL) <br>
-        Serum Creatinine: Level of serum creatinine in the blood (mg/dL) <br>
-        Serum Sodium: Level of serum sodium in the blood (mEq/L) <br>
-        Sex: Woman or man (binary) <br>
-        Smoking: If the patient smokes or not (boolean) <br>
-        Time: Follow-up period (days) <br>
-        Death Event: If the patient deceased during the follow-up period (boolean) <br>
+        Study Hours Per Day<br>
+        Extracurricular Hours Per Day<br>
+        Sleep Hours Per Day<br>
+        Social Hours Per Day<br>
+        Physical Activity Hours Per Day<br>
+        GPA<br>
+        Stress Level<br>
+
+
     </p>
     <form method="POST"
     action="{{ url_for('pretrained_model') }}">
