@@ -63,7 +63,39 @@ def set_data():
     
     # return render_template('login.html')#"<h1>Welcome!!!</h1>"
 
-@app.route('/predict/pretrained', methods=['GET', 'POST'])
+@app.route('/predict/trained_own_model', methods=['GET', 'POST'])
+def trained_own_model():
+    if request.method == 'POST':
+        study_hours_per_day = request.form.get('Study_Hours_Per_Day')
+        extracurricular_hours_per_day = request.form.get('Extracurricular_Hours_Per_Day')
+        sleep_hours_per_day = request.form.get('Sleep_Hours_Per_Day')
+        social_hours_per_day = request.form.get('Social_Hours_Per_Day')
+        physical_activity_hours_per_day = request.form.get('Physical_Activity_Hours_Per_Day')
+        gpa = request.form.get('GPA')
+
+        
+        import pickle
+        import pandas as pd
+        from numpy import reshape
+        loaded_model = None
+        stress_level = None
+        data = [study_hours_per_day,extracurricular_hours_per_day,sleep_hours_per_day,social_hours_per_day,physical_activity_hours_per_day,gpa]
+        print(data)
+        labels = ['Study_Hours_Per_Day','Extracurricular_Hours_Per_Day','Sleep_Hours_Per_Day','Social_Hours_Per_Day','Physical_Activity_Hours_Per_Day','GPA']
+        res = dict(map(lambda i,j : (i,j) , labels,data))
+        df = pd.DataFrame(res, index=[0])
+        # print(df.head)
+        # print(request.form)
+        # return request.form
+        reshape(data, shape=(1, -1))
+        with open('saved_model.pkl', 'rb') as file:
+            loaded_model = pickle.load(file)
+
+        if loaded_model:
+            stress_level = loaded_model.predict(df)
+            print(stress_level[0])
+            return f"<p>{stress_level[0]}</p>"
+
 
 
 @app.route('/predict/pretrained', methods=['GET', 'POST'])
