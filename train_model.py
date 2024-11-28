@@ -2,23 +2,6 @@ import numpy as np
 import pandas as pd 
 
 
-
-from sklearn.model_selection import train_test_split
-from sklearn.tree import DecisionTreeClassifier
-# from sklearn.metrics import f1_score
-
-
-df = pd.read_csv('student_lifestyle_dataset.csv')
-
-X = df.copy().drop(['Stress_Level', 'Student_ID'], axis='columns')
-y = df['Stress_Level'].copy()
-
-X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.1, random_state=1)
-
-print(X_test.head)
-
-model = DecisionTreeClassifier()
-
 # from sklearn.neighbors import KNeighborsClassifier
 # from sklearn.linear_model import LogisticRegression
 # from sklearn.discriminant_analysis import LinearDiscriminantAnalysis
@@ -26,18 +9,6 @@ model = DecisionTreeClassifier()
 # # model = LogisticRegression()
 # # model = KNeighborsClassifier()
 # # descision tree classifier instead
-model.fit(X_train, y_train)
-
-y_pred = model.predict(X_test)
-print(y_pred)
-# # print(y_test)
-# print(f"f1 score {f1_score(y_test, y_pred)}")
-
-import pickle
-# s = pickle.dumps(model)
-
-with open('saved_model.pkl', 'wb') as file:
-    pickle.dump(model, file)
 
 # # loaded_model = None
 # # with open('saved_model.pkl', 'rb') as file:
@@ -59,3 +30,51 @@ with open('saved_model.pkl', 'wb') as file:
 # plt.title('Confusion Matrix')
 # plt.savefig("static/styles/pretrained_confusion_matrix.png")
 # plt.show()
+
+
+def train_model(model_type, selected_features, name):
+    from sklearn.model_selection import train_test_split
+
+    df = pd.read_csv('student_lifestyle_dataset.csv')
+
+
+    X = df.copy().loc[:,selected_features]
+    y = df['Stress_Level'].copy()
+
+    X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.1, random_state=1)
+
+    match model_type:
+        case "DecisionTreeClassifier":
+            from sklearn.tree import DecisionTreeClassifier
+            model = DecisionTreeClassifier()
+        case _:
+            pass
+
+    model.fit(X_train, y_train)
+    
+    save_model(model, model_type, selected_features, name)
+
+
+
+def save_model(model, model_type, selected_features, filename):
+    data = {
+        "model": model,
+        "model_type": model_type,
+        "selected_features": selected_features
+    }
+
+    import pickle
+    
+    with open(filename, 'wb') as file:
+        pickle.dump(data, file)
+
+
+if __name__ == "__main__":
+    train_model("DecisionTreeClassifier", [
+        "Study_Hours_Per_Day",
+        "Extracurricular_Hours_Per_Day",
+        "Sleep_Hours_Per_Day",
+        "Social_Hours_Per_Day",
+        "Physical_Activity_Hours_Per_Day",
+        "GPA"
+    ], "saved_model.pkl")
