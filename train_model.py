@@ -48,7 +48,8 @@ def train_model(model_type, selected_features, name):
             from sklearn.tree import DecisionTreeClassifier
             model = DecisionTreeClassifier()
         case _:
-            pass
+            from sklearn.tree import DecisionTreeClassifier
+            model = DecisionTreeClassifier()
 
     model.fit(X_train, y_train)
     
@@ -65,7 +66,7 @@ def save_model(model, model_type, selected_features, filename):
 
     import pickle
     
-    with open(filename, 'wb') as file:
+    with open(f"models/{filename}", 'wb') as file:
         pickle.dump(data, file)
 
 
