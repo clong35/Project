@@ -8,7 +8,7 @@
 </head>
 
 <body>
-    <img src="static/pretrained_confusion_matrix.png">
+    <!-- <img src="static/pretrained_confusion_matrix.png"> -->
     <p>
         Here you can train a model of your own or use a premade model.
 
@@ -22,18 +22,20 @@
         Physical Activity Hours Per Day<br>
         GPA<br>
         Stress Level<br>
-
-
     </p>
-    <form method="POST"
-    action="{{ url_for('pretrained_model') }}">
-
-        <button type="submit">Use pretrained model</button>
-    </form>
     <form method="POST"
     action="{{ url_for('train_new_model') }}">
 
-        <button type="submit">Train your own</button>
+        <button type="submit">Train New Model</button>
+    </form>
+    <form method="POST"
+    action="{{ url_for('predict') }}">
+    <select name="model">
+        {% for model in models %}
+            <option value="{{model}}">{{model}}</option>
+        {% endfor %}
+    </select>
+        <button type="submit">Select</button>
     </form>
     
 </body>

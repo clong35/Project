@@ -1,0 +1,22 @@
+<html>
+<head>
+	<title>Machine Learning Project</title>
+    <link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='styles/styles.css') }}">
+</head>
+<body>
+	<div>
+		<h1>Model</h1>
+		<form method="POST"
+			action="{{ url_for('predict') }}">
+            {% for feature in features %}
+                <input type="number" name="{{feature}}" id="{{feature}}" value="{{feature}}", step="0.01">
+                <label>{{feature}}</label><br><br>
+            {% endfor %}
+        <button type="submit">Get Prediction</button>
+
+		</form>
+	</div>
+
+</body>
+
+</html>

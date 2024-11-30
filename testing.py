@@ -1,12 +1,22 @@
-import pandas as pd
-import numpy as np
+# import OS module
+import os
+# Get the list of all files and directories
+path = "models"
+dir_list = os.listdir(path)
+print("Files and directories in '", path, "' :")
+# prints all files
+print(dir_list)
 
-df = pd.read_csv('student_lifestyle_dataset.csv')
 
-from sklearn.model_selection import train_test_split
+# import pandas as pd
+# import numpy as np
 
-X = df.loc[:,['Stress_Level', "GPA"]]
-print(X.head)
+# df = pd.read_csv('student_lifestyle_dataset.csv')
+
+# from sklearn.model_selection import train_test_split
+
+# X = df.loc[:,['Stress_Level', "GPA"]]
+# print(X.head)
 # y = df['Stress_Level'].copy()
 
 # X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.1, random_state=1)

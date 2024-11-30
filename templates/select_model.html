@@ -1,0 +1,30 @@
+<html>
+<head>
+	<title>Machine Learning Project</title>
+    <link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='styles/styles.css') }}">
+</head>
+<body>
+	<div>
+		<h1>Model</h1>
+
+        <form method="POST" action="{{ url_for('input_features') }}">
+            <select name="agent_id">
+                <option value="1">Agent Homer</option>
+                <option value="2">Agent Lenny</option>
+                <option value="3">Agent Carl</option>
+            </select>
+            <button type="submit">Get Prediction</button>
+        </form>
+
+
+
+		</form>
+	</div>
+
+</body>
+
+</html>
+
+
+
+
