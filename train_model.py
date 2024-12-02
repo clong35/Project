@@ -44,22 +44,38 @@ def train_model(model_type, selected_features, name):
     X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.1, random_state=1)
 
     match model_type:
-        case "DecisionTreeClassifier":
+        case "Decision Tree Classifier":
             from sklearn.tree import DecisionTreeClassifier
             model = DecisionTreeClassifier()
-        case "LinearDiscriminantAnalysis":
+        case "Linear Discriminant Analysis":
             from sklearn.discriminant_analysis import LinearDiscriminantAnalysis
             model = LinearDiscriminantAnalysis()
-        case "LogisticRegression":
+        case "Logistic Regression":
             from sklearn.linear_model import LogisticRegression
             model = LogisticRegression()
 
         case _:
+            model_type = "Decision Tree Classifier"
             from sklearn.tree import DecisionTreeClassifier
             model = DecisionTreeClassifier()
 
     model.fit(X_train, y_train)
-    
+
+    # Save a confusion matrix of the performance
+    import matplotlib.pyplot as plt
+    from sklearn.metrics import confusion_matrix, ConfusionMatrixDisplay
+
+    y_pred = model.predict(X_test)
+
+    # Generate the confusion matrix
+    cm = confusion_matrix(y_test, y_pred)
+
+    # Display the confusion matrix
+    disp = ConfusionMatrixDisplay(confusion_matrix=cm, display_labels=['Low', 'Moderate', 'High'])
+    disp.plot(cmap=plt.cm.Blues)
+    plt.title('Confusion Matrix')
+    plt.savefig(f"static/{name.split('.')[0]}")
+    # plt.show()
     save_model(model, model_type, selected_features, name)
 
 
@@ -78,7 +94,7 @@ def save_model(model, model_type, selected_features, filename):
 
 
 if __name__ == "__main__":
-    train_model("DecisionTreeClassifier", [
+    train_model("Decision Tree Classifier", [
         "Study_Hours_Per_Day",
         "Extracurricular_Hours_Per_Day",
         "Sleep_Hours_Per_Day",

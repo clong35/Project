@@ -58,7 +58,7 @@ def process_model():
         print(selected_features)
         print(selected_model)
 
-        train_model(selected_model, selected_features, f"{model_name}.pkl")
+        train_model(selected_model[0], selected_features, f"{model_name}.pkl")
 
         # print(request.form)
     return redirect("/")
