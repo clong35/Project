@@ -5,7 +5,8 @@
 </head>
 <body>
 	<div>
-		<h1>Model</h1>
+		<h1>Predict</h1>
+        <p>Model trained using: <b>{{model_type[0].capitalize().replace("_", " ")}}</b>.</p>
 		<form method="POST"
 			action="{{ url_for('get_prediction') }}">
             {% for feature in features %}

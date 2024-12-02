@@ -16,13 +16,15 @@
         The dataset I chose is of student lifestyles and how that affects stress Level. 
         <br>
         <h3>List of Features</h3>
-        Study Hours Per Day<br>
-        Extracurricular Hours Per Day<br>
-        Sleep Hours Per Day<br>
-        Social Hours Per Day<br>
-        Physical Activity Hours Per Day<br>
-        GPA<br>
-        Stress Level<br>
+        <ul>
+            <li>Study Hours Per Day</li>
+            <li>Extracurricular Hours Per Day</li>
+            <li>Sleep Hours Per Day</li>
+            <li>Social Hours Per Day</li>
+            <li>Physical Activity Hours Per Day</li>
+            <li>GPA</li>
+            <li>Stress Level (<i>Feature to Predict</i>)</li>
+        </ul>
     </p>
     <form method="POST"
     action="{{ url_for('train_new_model') }}">
@@ -36,7 +38,7 @@
             <option value="{{model}}">{{model}}</option>
         {% endfor %}
     </select>
-        <button type="submit">Select</button>
+        <button type="submit">Select Pretrained Model</button>
     </form>
     
 </body>

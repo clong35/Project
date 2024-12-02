@@ -71,9 +71,10 @@ def predict():
             with open(f"models/{selected_model}", 'rb') as file:
                 data = pickle.load(file)
                 model = data["model"]
+                model_type = data["model_type"]
                 selected_features = data["selected_features"]
                 print(1)
-                return render_template('predict.html', features=selected_features, model=selected_model)
+                return render_template('predict.html', features=selected_features, model=selected_model, model_type=model_type)
 
                 # a = {}
                 # for feature in selected_features:
