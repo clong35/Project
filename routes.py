@@ -29,8 +29,6 @@ def get_models():
     import os
     path = "models"
     model_list = os.listdir(path)
-    print("Files and directories in '", path, "' :")
-    # prints all files
     print(model_list)
     return model_list
 
@@ -102,11 +100,15 @@ def predict():
 
 @app.route('/get_prediction', methods=['POST'])
 def get_prediction():
+    print(request.form)
     model_name = request.form.get('model')
+    print(model_name)
+
+    # return f"<p>{model_name}</p>"
     import pickle
     import pandas as pd
 
-    with open(model_name, 'rb') as file:
+    with open(f"models/{model_name}", 'rb') as file:
         data = pickle.load(file)
         model = data["model"]
         selected_features = data["selected_features"]

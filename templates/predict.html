@@ -10,8 +10,9 @@
 			action="{{ url_for('get_prediction') }}">
             {% for feature in features %}
                 <input type="number" name="{{feature}}" id="{{feature}}" value="{{feature}}", step="0.01">
-                <label>{{feature}}</label><br><br>
+                <label>{{feature.replace("_", " ")}}</label><br><br>
             {% endfor %}
+            <input type="hidden" name="model" value="{{model}}">
         <button type="submit">Get Prediction</button>
 
 		</form>
