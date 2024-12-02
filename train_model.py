@@ -47,6 +47,13 @@ def train_model(model_type, selected_features, name):
         case "DecisionTreeClassifier":
             from sklearn.tree import DecisionTreeClassifier
             model = DecisionTreeClassifier()
+        case "LinearDiscriminantAnalysis":
+            from sklearn.discriminant_analysis import LinearDiscriminantAnalysis
+            model = LinearDiscriminantAnalysis()
+        case "LogisticRegression":
+            from sklearn.linear_model import LogisticRegression
+            model = LogisticRegression()
+
         case _:
             from sklearn.tree import DecisionTreeClassifier
             model = DecisionTreeClassifier()

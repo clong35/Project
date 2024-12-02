@@ -8,6 +8,8 @@
 		<h1>Model</h1>
 		<form method="POST"
 			action="{{ url_for('process_model') }}">
+			<input type="text" name="model_name" id="model_name">
+			<label for="model_name">Model Name</label><br>
 			<H2>Select Features</H2>
 			{% for feature in features %}
 			<input type="checkbox"
@@ -19,10 +21,10 @@
 			<H2>Select Model</H2>
 			<input type="radio" name="selected_model" id="logistic_regression_classifier", value="logistic_regression_classifier">
 			<label for="logistic_regression_classifier">Logistic Regression Classifier</label><br>
-			<input type="radio" name="selected_model" id="decision_tree_classifier" value="decision_tree_classifier">
-			<label for="decision_tree_classifier">Decision Tree Classifier</label><br>
-			<input type="radio" name="selected_model" id="linear_discriminant_analysis" value="linear_discriminant_analysis">
-			<label for="linear_discriminant_analysis">Linear Discriminant Analysis</label><br>
+			<input type="radio" name="selected_model" id="DecisionTreeClassifier" value="DecisionTreeClassifier">
+			<label for="DecisionTreeClassifier">Decision Tree Classifier</label><br>
+			<input type="radio" name="selected_model" id="LinearDiscriminantAnalysis" value="LinearDiscriminantAnalysis">
+			<label for="LinearDiscriminantAnalysis">Linear Discriminant Analysis</label><br>
 			<button type="train">submit</button>
 		</form>
 	</div>

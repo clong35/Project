@@ -48,13 +48,14 @@ def train_new_model():
 @app.route('/process_model', methods=['GET', 'POST'])
 def process_model():
     if request.method == 'POST':
+        model_name = request.form.get('model_name')
         selected_features = request.form.getlist('selected_features')
         selected_model = request.form.getlist('selected_model')
         
         print(selected_features)
         print(selected_model)
 
-        train_model(selected_model, selected_features, "new_model_1")
+        train_model(selected_model, selected_features, f"{model_name}.pkl")
 
         # print(request.form)
     return redirect("/")
